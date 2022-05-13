@@ -11,11 +11,10 @@ if not os.path.exists(dir_name):
 
 driver= webdriver.Chrome("c:\chromedriver\chromedriver.exe")
 
-base_url = "https://neulbom.sjedues.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000007630&menuId=MNU_0000000000025639&"
+#base_url = "https://neulbom.sjedues.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000007630&menuId=MNU_0000000000025639&"
+base_url = "https://yangji.sjedums.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000007611&menuId=MNU_0000000000013161"
+
 url = base_url + "pageIndex=1&sso=ok"
-
-#url = 'https://yangji.sjedums.kr/cop/bbs/selectBoardList.do?bbsId=BBSMSTR_000000007611&menuId=MNU_0000000000013161&sso=ok'
-
 driver.get(url)
 # %%
 
@@ -46,8 +45,8 @@ for page_num in range(total_pages):   # 보통 4~5 next page
                 print(file_name)
 
                 ext_name = file_name.split('.')[-1]
-                #file_path = f'https://yangji.sjedums.kr/cmm/fms/getImage.do?siteId=SITE_000000000000407&appendPath={file[5]}&atchFileNm={file[1]}_{file[3]}.{ext_name}'
-                file_path = f'https://neulbom.sjedues.kr/cmm/fms/FileDown.do?atchFileId={file[1]}&fileSn={file[3]}&bbsId={file[5]}'
+                file_path = f'https://yangji.sjedums.kr/cmm/fms/getImage.do?siteId=SITE_000000000000407&appendPath={file[5]}&atchFileNm={file[1]}_{file[3]}.{ext_name}'
+                #file_path = f'https://neulbom.sjedues.kr/cmm/fms/FileDown.do?atchFileId={file[1]}&fileSn={file[3]}&bbsId={file[5]}'
 
                 print(file_path)
 
@@ -61,4 +60,3 @@ for page_num in range(total_pages):   # 보통 4~5 next page
         url = f'{base_url}&pageIndex={page_num+2}&sso=ok'
         driver.get(url)
         time.sleep(1)
-# %%
